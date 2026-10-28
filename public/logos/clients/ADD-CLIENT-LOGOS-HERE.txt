@@ -1,0 +1,1 @@
+Place client logo PNG/SVG/WebP files in this folder. See CLIENT-PLATFORM-LOGO-PATHS.txt in the project root.

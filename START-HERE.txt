@@ -1,0 +1,49 @@
+DIGITALNESS COMPLETE UPDATED REACT WEBSITE
+==========================================
+
+This ZIP contains the COMPLETE project, not only the navbar files.
+
+IMPORTANT FILES
+---------------
+1. src/components/Navbar.jsx
+   - Updated rounded Digitalness navbar
+   - Digital Marketing dropdown
+   - Web Design & Development dropdown
+   - Branding dropdown
+   - Other Services dropdown
+   - More dropdown
+   - Get Started button
+   - Responsive mobile menu
+
+2. src/styles/global.css
+   - COMPLETE website styling restored
+   - Homepage, service pages, contact form, tools, portfolio, blog, footer
+   - Updated navbar styling included at the bottom
+   - No index.css is required
+   - No navbar.css is required
+
+3. public/digitalness-logo.png
+   - Navbar logo file
+   - You can replace this file with the official transparent Digitalness logo later using the SAME filename.
+
+HOW TO RUN
+----------
+Open terminal inside this project folder and run:
+
+npm install
+npm run dev
+
+Then open the localhost URL shown by Vite.
+
+For frontend + included Express server together:
+
+npm start
+
+IF BROWSER SHOWS OLD STYLES
+---------------------------
+1. Stop the server with Ctrl+C
+2. Start again: npm run dev
+3. Hard refresh browser: Ctrl+Shift+R
+
+DO NOT CREATE index.css.
+The project imports src/styles/global.css from src/main.jsx.

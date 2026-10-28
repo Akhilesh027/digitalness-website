@@ -1,0 +1,399 @@
+/* ============================================================
+   DIGITALNESS GLOBAL LIVE THEME LAYER
+   Color-only compatibility layer. Layout/spacing/type untouched.
+============================================================ */
+
+:root {
+  --theme-primary: #130150;
+  --theme-primary-rgb: 19, 1, 80;
+  --theme-primary-hover: #100144;
+  --theme-primary-active: #0E013D;
+  --theme-secondary: #6D5DFC;
+  --theme-secondary-hover: #5E50D8;
+  --theme-accent: #8D4FEA;
+  --theme-accent-hover: #7944C9;
+  --theme-background: #F7F8FB;
+  --theme-surface: #FFFFFF;
+  --theme-surface-alt: #FBFBFD;
+  --theme-text: #130150;
+  --theme-muted: #777387;
+  --theme-border: #DADAE2;
+  --theme-soft: #E8E6EF;
+  --theme-dark-surface: #0B0A18;
+  --theme-on-primary: #FFFFFF;
+  --theme-on-secondary: #FFFFFF;
+  --theme-on-accent: #FFFFFF;
+  --theme-on-dark: #FFFFFF;
+  --theme-on-dark-muted: #B8B7C0;
+  --theme-disabled-bg: #CAC8D5;
+  --theme-disabled-text: #747180;
+  --theme-focus: #6D5DFC;
+  --theme-shadow: rgba(19, 1, 80, .14);
+  --theme-shadow-strong: rgba(19, 1, 80, .24);
+
+  /* Existing site token aliases. */
+  --bg: var(--theme-background);
+  --surface: var(--theme-surface);
+  --soft: var(--theme-soft);
+  --ink: var(--theme-text);
+  --muted: var(--theme-muted);
+  --line: var(--theme-border);
+  --brand: var(--theme-primary);
+  --brand2: var(--theme-secondary);
+  --dark: var(--theme-dark-surface);
+  --dark2: var(--theme-primary-active);
+}
+
+html,
+body {
+  background-color: var(--theme-background);
+  color: var(--theme-text);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.tool-heading h2,
+.section-title h2,
+.home-hero h1,
+.home-intro-heading h2,
+.home-clients-head h2,
+.home-partners-head h2,
+.home-platform-copy h2,
+.home-why-v3-heading h2,
+.home-service-card h3,
+.home-why-v3-card h3,
+.home-why-v3-profile-copy h3,
+.project-card h3,
+.blog-card h3 {
+  color: var(--theme-text) !important;
+}
+
+p,
+.muted,
+.tool-note,
+.file-tool-intro p,
+.home-hero-lead,
+.section-title p,
+.home-intro-heading p,
+.home-clients-head p,
+.home-partners-head p,
+.home-platform-copy p {
+  color: var(--theme-muted);
+}
+
+::selection {
+  background: var(--theme-primary);
+  color: var(--theme-on-primary);
+}
+
+/* Surfaces and sections */
+.section-soft,
+.page-hero,
+.service-hero,
+.home-hero-v3 {
+  background-color: var(--theme-background);
+}
+
+.tool-panel,
+.tools-nav,
+.service-card,
+.project-card,
+.blog-card,
+.contact-card,
+.position-card,
+.recommend-box,
+.upload-box,
+.audit-grid > div,
+.keyword-list span,
+.funnel-metrics > div,
+.palette-row > div,
+.contrast-preview {
+  border-color: var(--theme-border) !important;
+}
+
+.tool-panel,
+.tools-nav,
+.service-card,
+.project-card,
+.blog-card,
+.contact-card,
+.position-card,
+.upload-box {
+  background: var(--theme-surface);
+}
+
+.section-dark,
+.footer,
+.cta-panel,
+.home-system-section,
+.home-process-section {
+  background-color: var(--theme-dark-surface) !important;
+  color: var(--theme-on-dark) !important;
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6,
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.cta-panel h1,
+.cta-panel h2,
+.cta-panel h3,
+.home-system-section h1,
+.home-system-section h2,
+.home-system-section h3,
+.home-process-section h1,
+.home-process-section h2,
+.home-process-section h3 {
+  color: var(--theme-on-dark) !important;
+}
+
+.section-dark p,
+.footer p,
+.footer a,
+.home-system-section p,
+.home-process-section p {
+  color: var(--theme-on-dark-muted) !important;
+}
+
+/* Primary interactive controls */
+.btn-primary,
+.nav-cta,
+.menu-btn,
+.back-to-top,
+.home-why-v3-cta-strip,
+.home-why-v3-icon,
+.tools-nav button.active,
+.infosys-talk-btn,
+.infosys-full-contact {
+  background: var(--theme-primary) !important;
+  color: var(--theme-on-primary) !important;
+  border-color: var(--theme-primary) !important;
+  box-shadow: 0 12px 30px var(--theme-shadow);
+}
+
+.btn-primary:hover,
+.nav-cta:hover,
+.back-to-top:hover,
+.tools-nav button.active:hover,
+.infosys-talk-btn:hover,
+.infosys-full-contact:hover {
+  background: var(--theme-primary-hover) !important;
+  color: var(--theme-on-primary) !important;
+}
+
+.btn-primary:active,
+.nav-cta:active,
+.infosys-talk-btn:active {
+  background: var(--theme-primary-active) !important;
+}
+
+.btn-secondary,
+.btn-light {
+  background: var(--theme-surface) !important;
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border) !important;
+}
+
+.btn-secondary:hover,
+.btn-light:hover {
+  background: var(--theme-soft) !important;
+}
+
+button:disabled,
+.btn:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed !important;
+  opacity: .72;
+}
+
+.btn-primary:disabled,
+button[type="submit"]:disabled {
+  background: var(--theme-disabled-bg) !important;
+  color: var(--theme-disabled-text) !important;
+  border-color: var(--theme-disabled-bg) !important;
+  box-shadow: none !important;
+}
+
+/* Links, labels and icons */
+.eyebrow,
+.text-link,
+.service-card svg,
+.problem-list span,
+.check-list svg,
+.deliverable-box svg,
+.project-card small,
+.blog-card > span,
+.contact-card a:not(.btn),
+.keyword-list small,
+.home-service-icon,
+.home-service-topline svg,
+.home-platform-points svg,
+.home-why-v3-mini-label,
+.home-why-v3-checks svg,
+.nav-cta-icon,
+.home-why-v3-cta-strip a,
+.infosys-nav-link,
+.infosys-dropdown-head a,
+.infosys-dropdown-grid a:hover,
+.infosys-more-column a:hover,
+.infosys-full-heading,
+.infosys-menu-circle {
+  color: var(--theme-primary) !important;
+}
+
+.text-link:hover,
+.contact-card a:not(.btn):hover {
+  color: var(--theme-primary-hover) !important;
+}
+
+.home-hero h1 em {
+  background: linear-gradient(
+    90deg,
+    var(--theme-primary),
+    var(--theme-secondary) 55%,
+    var(--theme-accent)
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Forms */
+input:not([type="color"]),
+select,
+textarea {
+  background-color: var(--theme-surface) !important;
+  color: var(--theme-text) !important;
+  border-color: var(--theme-border) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--theme-muted) !important;
+  opacity: .8;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--theme-focus) !important;
+  outline-offset: 2px;
+}
+
+/* Existing Digitalness navbar */
+.site-header,
+.infosys-navbar {
+  background-color: var(--theme-background) !important;
+}
+
+.nav-shell.container,
+.infosys-navbar-inner,
+.infosys-nav-pill,
+.infosys-dropdown {
+  background-color: var(--theme-surface) !important;
+  border-color: var(--theme-border) !important;
+}
+
+.nav-link,
+.nav-link:hover,
+.nav-link:focus-visible,
+.mega-head > a,
+.mega-grid > a:hover,
+.mega-small > a:hover,
+.infosys-nav-link {
+  color: var(--theme-primary) !important;
+}
+
+.mega,
+.mega-small,
+.infosys-dropdown,
+.infosys-more-dropdown {
+  background: var(--theme-surface) !important;
+  border-color: var(--theme-border) !important;
+  box-shadow: 0 18px 45px var(--theme-shadow);
+}
+
+.mega-grid > a:hover,
+.mega-small > a:hover,
+.infosys-dropdown-grid a:hover,
+.infosys-more-column a:hover {
+  background: var(--theme-soft) !important;
+}
+
+.nav-cta-icon,
+.infosys-menu-circle,
+.infosys-talk-icon {
+  background: var(--theme-surface) !important;
+  color: var(--theme-primary) !important;
+}
+
+.infosys-full-menu {
+  background: var(--theme-dark-surface) !important;
+  color: var(--theme-on-dark) !important;
+}
+
+.infosys-full-menu h1,
+.infosys-full-menu h2,
+.infosys-full-menu h3,
+.infosys-full-menu a {
+  color: var(--theme-on-dark) !important;
+}
+
+.infosys-full-menu small,
+.infosys-full-menu p {
+  color: var(--theme-on-dark-muted) !important;
+}
+
+/* Tool navigation and status UI */
+.tools-nav button {
+  color: var(--theme-text);
+}
+
+.tools-nav button:hover {
+  background: var(--theme-soft);
+  color: var(--theme-primary);
+}
+
+.tool-error {
+  border-color: color-mix(in srgb, #B42318 25%, var(--theme-border)) !important;
+}
+
+.file-tool-success {
+  border-color: color-mix(in srgb, #198754 22%, var(--theme-border)) !important;
+}
+
+/* Cards and borders that should follow the active theme. */
+.card,
+.service-card,
+.project-card,
+.blog-card,
+.contact-card,
+.tool-panel,
+.position-card,
+.research-grid > *,
+.timeline > *,
+.process-grid > * {
+  border-color: var(--theme-border) !important;
+}
+
+/* Responsive behavior is inherited from the existing site. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,31 @@
+CLIENT LOGO PATHS
+
+Add actual client logo images here:
+public/logos/clients/
+
+Expected filenames used by src/pages/Home.jsx:
+- srinivasa-furnitures.png
+- sri-utsavam-banquets.png
+- sv-grand.png
+- shree-shyam-surgicals.png
+- daksha-caterers.png
+- sarigamas-v-banquets.png
+- omeetso.png
+- remedy-law-firm.png
+- hariharan-metal-wardrobes.png
+- toni-and-guy.png
+
+PLATFORM LOGO PATHS
+
+Add actual platform logo images here:
+public/logos/platforms/
+
+Expected filenames:
+- google.png
+- meta.png
+- microsoft.png
+- linkedin.png
+- amazon.png
+- flipkart.png
+
+If your filenames are different, edit only the clientLogos / platformLogos arrays near the top of src/pages/Home.jsx.

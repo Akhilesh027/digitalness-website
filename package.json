@@ -1,0 +1,36 @@
+{
+  "name": "digitalness-react-rebuild",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "start": "concurrently \"npm run server\" \"npm run dev\""
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "archiver": "^8.0.0",
+    "cheerio": "^1.2.0",
+    "concurrently": "latest",
+    "cors": "^2.8.6",
+    "docx": "^9.14.0",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.1",
+    "framer-motion": "latest",
+    "helmet": "^8.3.0",
+    "lucide-react": "latest",
+    "multer": "^2.5.0",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^2.4.5",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-helmet-async": "latest",
+    "react-router-dom": "latest",
+    "sharp": "^0.35.5",
+    "vite": "latest"
+  }
+}

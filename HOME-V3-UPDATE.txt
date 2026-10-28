@@ -1,0 +1,30 @@
+DIGITALNESS HOME V3 UPDATE
+
+Main files changed:
+1. src/pages/Home.jsx
+2. src/styles/global.css
+3. index.html (Montserrat brand font import)
+
+Client logo files:
+public/logos/clients/
+
+Platform logo files:
+public/logos/platforms/
+
+The Home.jsx file already contains the paths. Replace only the actual image files using the exact filenames, or edit the clientLogos/platformLogos arrays at the top of Home.jsx.
+
+What changed:
+- Shorter professional navbar
+- Brand-wide Montserrat font stack to visually align with the Digitalness wordmark
+- New capability ticker animation
+- Client logos moved into their own full-colour continuous marquee section
+- Platform logos moved into a separate orbital/constellation animation section
+- New Why Choose Digitalness section inspired by the supplied reference video: sticky left profile panel + animated right feature cards
+- More Digitalness/service content
+- Multiple animation styles rather than repeating one effect
+- Full-colour logos with no individual logo containers
+- Responsive tablet/mobile behavior
+
+Run:
+npm install
+npm run dev

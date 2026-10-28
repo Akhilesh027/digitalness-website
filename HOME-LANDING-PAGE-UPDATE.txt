@@ -1,0 +1,44 @@
+DIGITALNESS — PROFESSIONAL HOME LANDING PAGE UPDATE
+
+Files changed:
+1. src/pages/Home.jsx
+2. src/styles/global.css (new Home V2 styles appended at the bottom)
+
+Client logos:
+public/logos/clients/
+
+Platform/ecosystem logos:
+public/logos/platforms/
+
+IMPORTANT:
+- Logos are intentionally NOT placed in individual boxes/cards/containers.
+- The logo rows use transparent backgrounds and continuous flowing animation.
+- Client logos move continuously in one direction.
+- Platform/ecosystem logos move in the opposite direction.
+- Hover pauses the animation and restores logo color.
+- Missing logo images fall back to text labels without breaking the page.
+- The platform row is described as "Platforms & ecosystems we work across" to avoid claiming formal partnership status unless Digitalness has verified official partnerships/certifications.
+
+Expected client filenames:
+- srinivasa-furnitures.png
+- sri-utsavam-banquets.png
+- sv-grand.png
+- shree-shyam-surgicals.png
+- daksha-caterers.png
+- sarigamas-v-banquets.png
+- omeetso.png
+- remedy-law-firm.png
+- hariharan-metal-wardrobes.png
+- toni-and-guy.png
+
+Expected platform filenames:
+- google.png
+- meta.png
+- microsoft.png
+- linkedin.png
+- amazon.png
+- flipkart.png
+
+Run:
+npm install
+npm run dev
