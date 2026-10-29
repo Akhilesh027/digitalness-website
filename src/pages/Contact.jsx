@@ -22,24 +22,61 @@ export default function Contact() {
     });
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(form)
-      });
+      const backendUrl =
+        import.meta.env.VITE_CRM_API_URL ||
+        import.meta.env.VITE_API_URL ||
+        'https://server.digitalness.co.in';
 
-      if (!response.ok) {
-        throw new Error();
+      const primaryEndpoint = backendUrl
+        ? `${backendUrl.replace(/\/+$/, '')}/api/leads/public`
+        : '/api/leads/public';
+
+      let response;
+      try {
+        response = await fetch(primaryEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(form)
+        });
+      } catch {
+        // Fallback to /api/contact if direct URL had network error
+        response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(form)
+        });
       }
 
+      if (!response.ok && primaryEndpoint !== '/api/contact') {
+        const fallbackRes = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(form)
+        });
+        if (fallbackRes.ok) {
+          response = fallbackRes;
+        }
+      }
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Submission failed');
+      }
+
+      const resData = await response.json().catch(() => ({}));
       event.currentTarget.reset();
 
       setState({
         loading: false,
         message:
-          'Thanks. Your enquiry has been recorded and can be reviewed by the Digitalness team.'
+          resData.message ||
+          'Thanks! Your enquiry has been received and added to our CRM leads. Our team will reach out to you shortly.'
       });
     } catch {
       setState({

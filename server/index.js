@@ -620,13 +620,31 @@ app.post('/api/market-research', async (req, res) => {
    CONTACT
 ============================================================ */
 
-app.post('/api/contact', (req, res) => {
+app.post('/api/contact', async (req, res) => {
   try {
     const lead = {
       ...req.body,
       createdAt: new Date().toISOString(),
     };
 
+    // Forward directly to CRM Backend (https://server.digitalness.co.in)
+    try {
+      const crmServer = process.env.CRM_SERVER_URL || 'https://server.digitalness.co.in';
+      const crmRes = await fetch(`${crmServer.replace(/\/+$/, '')}/api/leads/public`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(req.body),
+      });
+
+      if (crmRes.ok) {
+        const crmData = await crmRes.json();
+        return res.status(201).json(crmData);
+      }
+    } catch (forwardErr) {
+      console.warn('[Website Server] CRM backend not reachable on :5000, fallback to local leads.json:', forwardErr.message);
+    }
+
+    // Local fallback persistence
     const dataDirectory = path.join(__dirname, 'data');
     const file = path.join(dataDirectory, 'leads.json');
 
@@ -651,6 +669,7 @@ app.post('/api/contact', (req, res) => {
 
     res.status(201).json({
       ok: true,
+      message: 'Your enquiry has been received and logged.',
     });
   } catch (error) {
     res.status(500).json({
