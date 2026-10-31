@@ -12,6 +12,7 @@ import FAQs from './pages/FAQs';
 import CaseStudies from './pages/CaseStudies';
 import Testimonials from './pages/Testimonials';
 import { Blogs, BlogDetail } from './pages/Blogs';
+import ExperienceCertification from './pages/ExperienceCertification';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import NotFound from './pages/NotFound';
@@ -34,6 +35,8 @@ export default function App() {
 
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
+        <Route path="/certifications" element={<ExperienceCertification />} />
+        <Route path="/verify-certificate" element={<ExperienceCertification />} />
 
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />

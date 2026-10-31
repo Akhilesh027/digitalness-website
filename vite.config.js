@@ -20,6 +20,11 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      '/uploads': {
+        target: 'https://server.digitalness.co.in',
+        changeOrigin: true,
+        secure: false,
+      },
       '/api': {
         target: 'https://server.digitalness.co.in',
         changeOrigin: true,

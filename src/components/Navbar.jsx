@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   ArrowUpRight,
+  Award,
   BriefcaseBusiness,
   Building2,
   Camera,
@@ -81,6 +82,11 @@ const moreLinks = [
     label: 'Careers',
     href: '/careers',
     icon: BriefcaseBusiness
+  },
+  {
+    label: 'Certifications',
+    href: '/certifications',
+    icon: Award
   },
   {
     label: 'Testimonials',
@@ -263,7 +269,7 @@ export default function Navbar() {
             {menuGroups.map((group) => {
               const services =
                 servicesByCategory?.[
-                  group.dataKey
+                group.dataKey
                 ] || [];
 
               const isOpen =
@@ -560,7 +566,7 @@ export default function Navbar() {
             {menuGroups.map((group) => {
               const services =
                 servicesByCategory?.[
-                  group.dataKey
+                group.dataKey
                 ] || [];
 
               const Icon = group.icon;

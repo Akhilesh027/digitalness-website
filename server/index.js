@@ -166,8 +166,8 @@ function runCommand(command, args, timeout = 120000) {
         reject(
           new Error(
             stderr.trim() ||
-              stdout.trim() ||
-              `${command} exited with code ${code}`,
+            stdout.trim() ||
+            `${command} exited with code ${code}`,
           ),
         );
       }
@@ -405,8 +405,8 @@ app.post('/api/seo-audit', async (req, res) => {
       recommendations: recommendations.length
         ? recommendations
         : [
-            'Core on-page checks look healthy. Continue with content quality, schema, crawlability, Core Web Vitals and off-page review.',
-          ],
+          'Core on-page checks look healthy. Continue with content quality, schema, crawlability, Core Web Vitals and off-page review.',
+        ],
     });
   } catch (error) {
     res.status(400).json({
