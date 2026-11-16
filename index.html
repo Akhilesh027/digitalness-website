@@ -32,13 +32,18 @@
     />
 
     <!-- Primary SEO -->
-    <title>
-      Digitalness | Digital Growth Agency
-    </title>
+    <title data-rh="true">Digitalness | Digital Growth Agency</title>
 
     <meta
+      data-rh="true"
       name="description"
       content="Digitalness — digital marketing, web development, branding, SEO, advertising, content, analytics and business growth solutions."
+    />
+
+    <link
+      data-rh="true"
+      rel="canonical"
+      href="https://digitalness.co.in/"
     />
 
     <meta
@@ -75,6 +80,11 @@
     />
 
     <meta
+      property="og:url"
+      content="https://digitalness.co.in/"
+    />
+
+    <meta
       property="og:title"
       content="Digitalness | Digital Growth Agency"
     />
@@ -86,7 +96,7 @@
 
     <meta
       property="og:image"
-      content="/digitalness-logo.png"
+      content="https://digitalness.co.in/digitalness-logo.png"
     />
 
     <meta
@@ -112,8 +122,49 @@
 
     <meta
       name="twitter:image"
-      content="/digitalness-logo.png"
+      content="https://digitalness.co.in/digitalness-logo.png"
     />
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://digitalness.co.in/#website",
+          "url": "https://digitalness.co.in/",
+          "name": "Digitalness",
+          "description": "Digital marketing, web development, branding, SEO, and business growth agency",
+          "publisher": {
+            "@id": "https://digitalness.co.in/#organization"
+          }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://digitalness.co.in/#organization",
+          "name": "Digitalness",
+          "url": "https://digitalness.co.in/",
+          "logo": "https://digitalness.co.in/digitalness-logo.png",
+          "image": "https://digitalness.co.in/digitalness-logo.png",
+          "description": "Digitalness combines digital marketing, web development, branding, SEO, analytics and business solutions into practical growth systems.",
+          "telephone": "+91-9989329642",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Hyderabad",
+            "addressRegion": "Telangana",
+            "addressCountry": "IN"
+          },
+          "priceRange": "$$",
+          "sameAs": [
+            "https://www.facebook.com/share/p/1VM94FUC2U/",
+            "https://www.instagram.com/digitalness.co.in",
+            "https://youtube.com/@digitalness-india"
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
 
   <body>

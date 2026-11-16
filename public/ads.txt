@@ -1,0 +1,2 @@
+# ads.txt file for digitalness.co.in
+# No third-party ad networks currently authorized.

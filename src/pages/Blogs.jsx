@@ -75,21 +75,21 @@ export function Blogs() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-          let isMounted = true;
-          async function load() {
-            const data = await fetchBlogsFromApi();
-            if (isMounted) {
-              if (data && data.length > 0) {
-                setApiBlogs(data);
-              }
-              setLoading(false);
-            }
-          }
-          load();
-          return () => {
-            isMounted = false;
-          };
-        }, []);
+    let isMounted = true;
+    async function load() {
+      const data = await fetchBlogsFromApi();
+      if (isMounted) {
+        if (data && data.length > 0) {
+          setApiBlogs(data);
+        }
+        setLoading(false);
+      }
+    }
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Merge API blogs (which take precedence) with initial fallback articles
   const allBlogs = useMemo(() => {
@@ -143,13 +143,13 @@ export function Blogs() {
 
   return (
     <>
-        <Seo
-          title="Blogs & Insights"
-          description="Practical thinking and guides across digital marketing, performance ads, web development, SEO and branding by Digitalness."
-          path="/blogs"
-        />
+      <Seo
+        title="Blogs & Insights"
+        description="Practical thinking and guides across digital marketing, performance ads, web development, SEO and branding by Digitalness."
+        path="/blogs"
+      />
 
-        <style>{`
+      <style>{`
         .blog-hero {
           padding: 80px 0 48px;
           text-align: center;
@@ -330,201 +330,77 @@ export function Blogs() {
         }
       `}</style>
 
-        <section className="blog-hero">
-          <div className="container narrow">
-            <span className="eyebrow">Practical Thinking</span>
-            <h1>Blogs & Digital Insights</h1>
-            <p>
-              Actionable perspectives, frameworks, and case breakdowns across growth marketing, web engineering, brand systems, and performance.
-            </p>
+      <section className="blog-hero">
+        <div className="container narrow">
+          <span className="eyebrow">Practical Thinking</span>
+          <h1>Blogs & Digital Insights</h1>
+          <p>
+            Actionable perspectives, frameworks, and case breakdowns across growth marketing, web engineering, brand systems, and performance.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: '32px' }}>
+        <div className="container">
+          <div className="blog-controls">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+              <div className="category-pills">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`cat-pill ${selectedCategory === cat ? 'active' : ''}`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+
+              <div className="blog-search-bar">
+                <Search size={16} className="blog-search-icon" />
+                <input
+                  type="text"
+                  placeholder="Search articles & topics..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+            </div>
           </div>
-        </section>
 
-            <section className="section" style={{ paddingTop: '32px' }}>
-              <div className="container">
-                <div className="blog-controls">
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-                    <div className="category-pills">
-                      {categories.map((cat) => (
-                        <button
-                          key={cat}
-                          onClick={() => setSelectedCategory(cat)}
-                          className={`cat-pill ${selectedCategory === cat ? 'active' : ''}`}
-                        >
-                          {cat}
-                        </button>
-                      ))}
-                    </div>
-
-                    <div className="blog-search-bar">
-                      <Search size={16} className="blog-search-icon" />
-                      <input
-                        type="text"
-                        placeholder="Search articles & topics..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {filtered.length === 0 ? (
-                  <div style={{ textAlign: 'center', padding: '64px 0', color: '#64677a' }}>
-                    <BookOpen size={40} style={{ margin: '0 auto 12px', opacity: 0.5 }} />
-                    <h3>No articles match your criteria</h3>
-                    <p>Try searching for a different keyword or select another category.</p>
-                  </div>
-                ) : (
-                  <div className="blog-grid-enhanced">
-                    {filtered.map((b) => (
-                      <Link key={b.slug} to={`/blog/${b.slug}`} className="blog-card-item">
-                        <div className="blog-card-img-wrap">
-                          {b.featuredImage ? (
-                            <img src={b.featuredImage} alt={b.title} loading="lazy" />
-                          ) : (
-                            <div className="blog-img-placeholder">
-                              <div style={{ textAlign: 'center', padding: '16px' }}>
-                                <Sparkles size={28} style={{ margin: '0 auto 8px', opacity: 0.8 }} />
-                                <span style={{ fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.05em' }}>
-                                  {b.category}
-                                </span>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="blog-card-content">
-                          <div className="blog-meta-top">
-                            <span className="blog-cat-badge">{b.category}</span>
-                            {b.publishedAt && (
-                              <span className="blog-date">
-                                <Calendar size={13} />
-                                {new Date(b.publishedAt).toLocaleDateString('en-US', {
-                                  month: 'short',
-                                  day: 'numeric',
-                                  year: 'numeric',
-                                })}
-                              </span>
-                            )}
-                          </div>
-
-                          <h3>{b.title}</h3>
-                          <p>{b.excerpt}</p>
-
-                          <span className="blog-read-more">
-                            Read Article <ArrowRight size={15} />
+          {filtered.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '64px 0', color: '#64677a' }}>
+              <BookOpen size={40} style={{ margin: '0 auto 12px', opacity: 0.5 }} />
+              <h3>No articles match your criteria</h3>
+              <p>Try searching for a different keyword or select another category.</p>
+            </div>
+          ) : (
+            <div className="blog-grid-enhanced">
+              {filtered.map((b) => (
+                <Link key={b.slug} to={`/blog/${b.slug}`} className="blog-card-item">
+                  <div className="blog-card-img-wrap">
+                    {b.featuredImage ? (
+                      <img src={b.featuredImage} alt={b.title} loading="lazy" />
+                    ) : (
+                      <div className="blog-img-placeholder">
+                        <div style={{ textAlign: 'center', padding: '16px' }}>
+                          <Sparkles size={28} style={{ margin: '0 auto 8px', opacity: 0.8 }} />
+                          <span style={{ fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.05em' }}>
+                            {b.category}
                           </span>
                         </div>
-                      </Link>
-                    ))}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </section>
-          </>
-          );
-}
 
-          export function BlogDetail() {
-  const {slug} = useParams();
-          const [blog, setBlog] = useState(null);
-          const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-                let isMounted = true;
-                async function load() {
-                  // 1. Try API endpoints
-                  const apiItem = await fetchBlogDetailFromApi(slug);
-                  if (isMounted && apiItem) {
-                    setBlog({
-                      slug: apiItem.slug,
-                      title: apiItem.title,
-                      category: apiItem.category || 'Insights',
-                      shortDescription: apiItem.shortDescription,
-                      excerpt: apiItem.shortDescription,
-                      content: apiItem.content,
-                      featuredImage: resolveImageUrl(apiItem.featuredImage),
-                      bannerImage: resolveImageUrl(apiItem.bannerImage),
-                      author: apiItem.author || 'Digitalness Team',
-                      publishedAt: apiItem.publishedAt || apiItem.createdAt,
-                      metaTitle: apiItem.metaTitle,
-                      metaDescription: apiItem.metaDescription,
-                    });
-                    setLoading(false);
-                    return;
-                  }
-
-                  // 2. Fallback to site.js
-                  const fallback = fallbackBlogs.find((x) => x.slug === slug);
-                  if (isMounted) {
-                    setBlog(fallback || null);
-                    setLoading(false);
-                  }
-                }
-                load();
-                return () => {
-                  isMounted = false;
-                };
-              }, [slug]);
-
-          if (!loading && !blog) {
-    return <Blogs />;
-  }
-
-          const b = blog || { };
-
-          return (
-    <>
-            <Seo
-              title={b.metaTitle || b.title || 'Blog Post'}
-              description={b.metaDescription || b.shortDescription || b.excerpt}
-              path={`/blog/${slug}`}
-            />
-
-                  <article className="article container narrow" style={{ paddingTop: '40px', paddingBottom: '80px' }}>
-                    <Link
-                      to="/blogs"
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        color: '#6d5dfc',
-                        fontWeight: 700,
-                        fontSize: '0.88rem',
-                        marginBottom: '24px',
-                        textDecoration: 'none',
-                      }}
-                    >
-                      <ArrowLeft size={16} /> Back to all articles
-                    </Link>
-
-                    {b.category && <span className="eyebrow">{b.category}</span>}
-                    <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15, margin: '8px 0 16px', color: '#130150' }}>
-                      {b.title}
-                    </h1>
-
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '18px',
-                        color: '#8c93a4',
-                        fontSize: '0.88rem',
-                        marginBottom: '28px',
-                        borderBottom: '1px solid #e3e7ef',
-                        paddingBottom: '16px',
-                      }}
-                    >
-                      {b.author && (
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <User size={15} /> {b.author}
-                        </span>
-                      )}
+                  <div className="blog-card-content">
+                    <div className="blog-meta-top">
+                      <span className="blog-cat-badge">{b.category}</span>
                       {b.publishedAt && (
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <Calendar size={15} />
+                        <span className="blog-date">
+                          <Calendar size={13} />
                           {new Date(b.publishedAt).toLocaleDateString('en-US', {
-                            month: 'long',
+                            month: 'short',
                             day: 'numeric',
                             year: 'numeric',
                           })}
@@ -532,89 +408,213 @@ export function Blogs() {
                       )}
                     </div>
 
-                    {(b.bannerImage || b.featuredImage) && (
-                      <div
-                        style={{
-                          width: '100%',
-                          maxHeight: '440px',
-                          borderRadius: '20px',
-                          overflow: 'hidden',
-                          margin: '0 0 32px',
-                          boxShadow: '0 8px 30px rgba(19, 1, 80, 0.08)',
-                        }}
-                      >
-                        <img
-                          src={b.bannerImage || b.featuredImage}
-                          alt={b.title}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                        />
-                      </div>
-                    )}
+                    <h3>{b.title}</h3>
+                    <p>{b.excerpt}</p>
 
-                    {b.excerpt && (
-                      <p
-                        className="lead"
-                        style={{
-                          fontSize: '1.2rem',
-                          lineHeight: 1.7,
-                          color: '#4a4370',
-                          fontWeight: 500,
-                          marginBottom: '32px',
-                        }}
-                      >
-                        {b.excerpt}
-                      </p>
-                    )}
+                    <span className="blog-read-more">
+                      Read Article <ArrowRight size={15} />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </>
+  );
+}
 
-                    {b.content ? (
-                      <div
-                        className="blog-content-body"
-                        style={{
-                          lineHeight: 1.85,
-                          fontSize: '1.08rem',
-                          color: '#2d3748',
-                          whiteSpace: 'pre-line',
-                        }}
-                      >
-                        {b.content}
-                      </div>
-                    ) : (
-                        <div style={{ lineHeight: 1.8, fontSize: '1.05rem', color: '#334155' }}>
-                          <h2>Start with the business question</h2>
-                          <p>
-                            Digital tactics become more useful when they are tied to a specific business decision: who are we trying to reach, what do they need to understand, what action should be easier, and how will we know whether the change helped?
-                          </p>
-                          <h2>Build the system around the journey</h2>
-                          <p>
-                            Review the message, channel, creative, landing experience and measurement together. A weak result can come from friction anywhere in that chain, so changing only one ad, post or page can hide the real issue.
-                          </p>
-                          <h2>Measure signals that support decisions</h2>
-                          <p>
-                            Choose a small set of indicators that connect activity to quality and conversion. Review them consistently, document what changed and use the learning to decide the next experiment.
-                          </p>
-                      </div>
+export function BlogDetail() {
+  const { slug } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function load() {
+      // 1. Try API endpoints
+      const apiItem = await fetchBlogDetailFromApi(slug);
+      if (isMounted && apiItem) {
+        setBlog({
+          slug: apiItem.slug,
+          title: apiItem.title,
+          category: apiItem.category || 'Insights',
+          shortDescription: apiItem.shortDescription,
+          excerpt: apiItem.shortDescription,
+          content: apiItem.content,
+          featuredImage: resolveImageUrl(apiItem.featuredImage),
+          bannerImage: resolveImageUrl(apiItem.bannerImage),
+          author: apiItem.author || 'Digitalness Team',
+          publishedAt: apiItem.publishedAt || apiItem.createdAt,
+          metaTitle: apiItem.metaTitle,
+          metaDescription: apiItem.metaDescription,
+        });
+        setLoading(false);
+        return;
+      }
+
+      // 2. Fallback to site.js
+      const fallback = fallbackBlogs.find((x) => x.slug === slug);
+      if (isMounted) {
+        setBlog(fallback || null);
+        setLoading(false);
+      }
+    }
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, [slug]);
+
+  if (!loading && !blog) {
+    return <Blogs />;
+  }
+
+  const b = blog || {};
+
+  return (
+    <>
+      <Seo
+        title={b.metaTitle || b.title || 'Blog Post'}
+        description={b.metaDescription || b.shortDescription || b.excerpt}
+        path={`/blog/${slug}`}
+      />
+
+      <article className="article container narrow" style={{ paddingTop: '40px', paddingBottom: '80px' }}>
+        <Link
+          to="/blogs"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#6d5dfc',
+            fontWeight: 700,
+            fontSize: '0.88rem',
+            marginBottom: '24px',
+            textDecoration: 'none',
+          }}
+        >
+          <ArrowLeft size={16} /> Back to all articles
+        </Link>
+
+        {b.category && <span className="eyebrow">{b.category}</span>}
+        <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15, margin: '8px 0 16px', color: '#130150' }}>
+          {b.title}
+        </h1>
+
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '18px',
+            color: '#8c93a4',
+            fontSize: '0.88rem',
+            marginBottom: '28px',
+            borderBottom: '1px solid #e3e7ef',
+            paddingBottom: '16px',
+          }}
+        >
+          {b.author && (
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <User size={15} /> {b.author}
+            </span>
+          )}
+          {b.publishedAt && (
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Calendar size={15} />
+              {new Date(b.publishedAt).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </span>
+          )}
+        </div>
+
+        {(b.bannerImage || b.featuredImage) && (
+          <div
+            style={{
+              width: '100%',
+              maxHeight: '440px',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              margin: '0 0 32px',
+              boxShadow: '0 8px 30px rgba(19, 1, 80, 0.08)',
+            }}
+          >
+            <img
+              src={b.bannerImage || b.featuredImage}
+              alt={b.title}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
         )}
 
-                    <div style={{ marginTop: '54px', paddingTop: '28px', borderTop: '1px solid #e3e7ef' }}>
-                      <Link
-                        to="/blogs"
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '8px',
-                          background: '#130150',
-                          color: '#fff',
-                          padding: '12px 24px',
-                          borderRadius: '12px',
-                          fontWeight: 700,
-                          textDecoration: 'none',
-                          fontSize: '0.9rem',
-                        }}
-                      >
-                        <ArrowLeft size={16} /> Explore All Articles
-                      </Link>
-                    </div>
-                  </article>
-                </>
-              );
+        {b.excerpt && (
+          <p
+            className="lead"
+            style={{
+              fontSize: '1.2rem',
+              lineHeight: 1.7,
+              color: '#4a4370',
+              fontWeight: 500,
+              marginBottom: '32px',
+            }}
+          >
+            {b.excerpt}
+          </p>
+        )}
+
+        {b.content ? (
+          <div
+            className="blog-content-body"
+            style={{
+              lineHeight: 1.85,
+              fontSize: '1.08rem',
+              color: '#2d3748',
+              whiteSpace: 'pre-line',
+            }}
+          >
+            {b.content}
+          </div>
+        ) : (
+          <div style={{ lineHeight: 1.8, fontSize: '1.05rem', color: '#334155' }}>
+            <h2>Start with the business question</h2>
+            <p>
+              Digital tactics become more useful when they are tied to a specific business decision: who are we trying to reach, what do they need to understand, what action should be easier, and how will we know whether the change helped?
+            </p>
+            <h2>Build the system around the journey</h2>
+            <p>
+              Review the message, channel, creative, landing experience and measurement together. A weak result can come from friction anywhere in that chain, so changing only one ad, post or page can hide the real issue.
+            </p>
+            <h2>Measure signals that support decisions</h2>
+            <p>
+              Choose a small set of indicators that connect activity to quality and conversion. Review them consistently, document what changed and use the learning to decide the next experiment.
+            </p>
+          </div>
+        )}
+
+        <div style={{ marginTop: '54px', paddingTop: '28px', borderTop: '1px solid #e3e7ef' }}>
+          <Link
+            to="/blogs"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#130150',
+              color: '#fff',
+              padding: '12px 24px',
+              borderRadius: '12px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              fontSize: '0.9rem',
+            }}
+          >
+            <ArrowLeft size={16} /> Explore All Articles
+          </Link>
+        </div>
+      </article>
+    </>
+  );
 }
